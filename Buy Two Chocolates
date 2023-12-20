@@ -1,0 +1,21 @@
+class Solution {
+    public int buyChoco(int[] prices, int money) {
+        int res= Integer.MAX_VALUE;
+        int amt;
+        for(int i=0;i<prices.length;i++){
+            for(int j=0;j<prices.length;j++){
+                if(i!=j){
+                    int sum=prices[i]+prices[j];
+                    res=Math.min(res,sum);
+                }
+            }
+        }
+        amt=money-res;
+        if(amt>=0){
+            return amt;
+        }
+        else{
+            return money;
+        }
+    }
+}
