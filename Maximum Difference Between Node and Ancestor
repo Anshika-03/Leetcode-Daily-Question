@@ -1,0 +1,15 @@
+class Solution {
+    public int maxAncestorDiff(TreeNode root) {
+        return dfs(root,root.val,root.val);
+    }
+    public int dfs(TreeNode node,int cmax,int cmin){
+        if(node==null) {
+            return cmax-cmin;
+        }
+        cmax=Math.max(cmax,node.val);
+        cmin=Math.min(cmin,node.val);
+        int left=dfs(node.left,cmax,cmin);
+        int right=dfs(node.right,cmax,cmin);
+        return Math.max(left,right);
+    }
+}
