@@ -1,0 +1,15 @@
+class Solution {
+    public boolean halvesAreAlike(String s) {
+        HashSet<Character> hset=new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));
+        int c=0;
+        for(int i=0,j=s.length()-1;i<j;i++,j--){
+            if(hset.contains(s.charAt(i))){
+                c++;
+            }
+            if(hset.contains(s.charAt(j))){
+                c--;
+            }
+        }
+        return c==0;
+    }
+}
