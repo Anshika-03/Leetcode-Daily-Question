@@ -1,0 +1,25 @@
+class Solution {
+    Integer arr[][][];
+    int mod=1000000007;
+    public int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
+        arr=new Integer[m][n][maxMove+1];
+        return solve(m,n,maxMove,startRow,startColumn);
+    }
+    public int solve(int m,int n,int move,int r,int col){
+        if(r<0||r>=m||col<0||col>=n){
+            return 1;
+        }
+        if(move<=0){
+            return 0;
+        }
+        if(arr[r][col][move]!=null){
+            return arr[r][col][move];
+        }
+        int res=0;
+        res=(res+solve(m,n,move-1,r-1,col))%mod;
+        res=(res+solve(m,n,move-1,r+1,col))%mod;
+        res=(res+solve(m,n,move-1,r,col-1))%mod;
+        res=(res+solve(m,n,move-1,r,col+1))%mod;
+        return arr[r][col][move]=res;
+    }
+}
