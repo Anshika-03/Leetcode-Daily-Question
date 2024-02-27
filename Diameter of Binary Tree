@@ -1,0 +1,17 @@
+class Solution {
+    private int depth=0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        dfs(root);
+        return depth;
+        
+    }
+    private int dfs(TreeNode node){
+        if(node==null){
+            return 0;
+        }
+        int left=dfs(node.left);
+        int right=dfs(node.right);
+        depth=Math.max(depth,left+right);
+        return Math.max(right,left)+1;
+    }
+}
