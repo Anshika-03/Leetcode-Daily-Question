@@ -1,0 +1,22 @@
+class Solution {
+    private int maxDep;
+    private int bottomLeft;
+    public int findBottomLeftValue(TreeNode root) {
+        maxDep=-1;
+        bottomLeft=0;
+        dfs(root,0);
+        return bottomLeft;
+        
+    }
+     private void dfs(TreeNode cur, int depth) {
+        if (cur==null) {
+            return;
+        }
+        if (depth>maxDep) { 
+            maxDep=depth;
+            bottomLeft=cur.val;
+        }
+        dfs(cur.left, depth+1);
+        dfs(cur.right, depth+1);
+    }
+}
