@@ -1,0 +1,35 @@
+class Solution {
+    public String customSortString(String order, String s) {
+        int c=1;
+        HashMap<Character,Integer> map1=new HashMap<>();
+        for(char i:order.toCharArray()){
+            map1.put(i,c++);
+        }
+        HashMap<Integer,String> map2=new HashMap<>();
+        String str="";
+    
+        for(char i:s.toCharArray()){
+            if(map1.containsKey(i)){
+                int k=map1.get(i);
+                if(map2.containsKey(k)){
+                    String a=map2.get(k);
+                    a+=i;
+                    map2.put(k,a);
+                }else{
+                    String a="";
+                    a+=i;
+                    map2.put(k,a);
+                }
+            }else{
+               str+=i;
+            }
+        }
+        String ans="";
+        for(int i=1;i<=26;i++){
+            if(map2.containsKey(i)){
+                ans+=map2.get(i);
+            }
+        }
+        return ans+str;
+    }
+}
