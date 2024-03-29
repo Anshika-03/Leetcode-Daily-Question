@@ -1,0 +1,23 @@
+class Solution {
+    public long countSubarrays(int[] nums, int k) {
+        int l=0, r=0,n=nums.length;
+        int maxel=Integer.MIN_VALUE;
+        int maxcnt=0;
+        long subarrcnt=0;
+        for (int num:nums) {
+            maxel=Math.max(maxel, num);
+        }
+        while(r<n) {
+            if (nums[r++] == maxel) {
+                maxcnt++;
+            }
+            while (maxcnt== k) {
+                if (nums[l++] == maxel) {
+                    maxcnt--;
+                }
+            }
+            subarrcnt+= l;
+        }
+        return subarrcnt;
+    }
+}
