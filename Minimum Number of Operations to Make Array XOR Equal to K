@@ -1,0 +1,9 @@
+ int count = k, ans = 0;
+        for (int num : nums){
+            count ^= num;
+        }
+        while (count){
+            ans += count & 1;
+            count >>= 1;
+        }
+        return ans;
